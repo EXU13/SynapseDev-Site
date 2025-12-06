@@ -1,195 +1,296 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SynapseDev — Conectando ideias a soluções inovadoras</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SynapseDev</title>
   <style>
-    :root{
-      --bg: #f7f8fb;
-      --card: #fff;
-      --accent: hsl(186, 100%, 50%);
-      --muted: #6b7280;
-      --maxw: 1100px;                                           
-      --radius: 12px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    *{box-sizing:border-box}
-    body{font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; margin:0; background:var(--bg); color:#0f172a; -webkit-font-smoothing:antialiased}
-    .container{max-width:var(--maxw); margin:0 auto; padding:2rem}
-    .header{background:linear-gradient(90deg,#fff, #f3f6ff); box-shadow: 0 2px 8px rgba(10,10,10,0.03)}
-    .nav{display:flex; justify-content:space-between; align-items:center; padding:1rem 2rem}
-    .brand{display:flex; align-items:center; gap:0.75rem; font-weight:700; font-size:1.125rem}
-    .logo{width:60px; height:auto; display:block; align-items:center; justify-content:center; border-radius:10px; background:linear-gradient(135deg,var(--accent), hsl(186, 100%, 50%)); color:white; font-weight:700}
-    .navlinks{display:flex; gap:1rem; align-items:center}
-    .navlinks a{color:var(--muted); text-decoration:none; padding:0.5rem 0.75rem; border-radius:8px; font-size:0.95rem}
-    .navlinks a.cta{background:var(--accent); color:white}
-    .hero{padding:3rem 1rem; display:grid; grid-template-columns:1fr 360px; gap:2rem; align-items:center}
-    .hero h1{font-size:2rem; margin:0 0 0.5rem}
-    .hero p{margin:0 0 1rem; color:var(--muted)}
-    .card{background:var(--card); border-radius:var(--radius); padding:1rem; box-shadow: 0 6px 18px rgba(16,24,40,0.04)}
-    .services{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1rem}
-    .service{padding:1rem; border-radius:10px; border:1px solid rgba(15,23,42,0.03); text-align:center}
-    .team{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; margin-top:1rem}
-    .member{display:flex; gap:0.75rem; align-items:center; padding:0.75rem}
-    .avatar{width:56px;height:56px;border-radius:999px; background:linear-gradient(135deg,#f97316,#ef4444); display:flex; align-items:center; justify-content:center; color:white; font-weight:700}
-    .contact{display:grid; grid-template-columns:1fr 320px; gap:1rem; margin-top:1rem}
-    .footer{padding:2rem 1rem; text-align:center; color:var(--muted); font-size:0.95rem; margin-top:2rem}
-    @media (max-width:900px){
-      .hero{grid-template-columns:1fr}
-      .services{grid-template-columns:repeat(2,1fr)}
-      .team{grid-template-columns:repeat(2,1fr)}
-      .contact{grid-template-columns:1fr}
-      .navlinks{display:none}
+
+    body, html {
+      font-family: Arial, sans-serif;
+      color: #fff;
+      height: 100%;
+      overflow-x: hidden;
+      background: #0a0f2c;
     }
-    .note{font-size:0.95rem; color:var(--muted); padding-top:0.5rem}
+
+    #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: 0;
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      background: transparent;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(0, 0, 0, 0.5);
+      position: sticky;
+      top: 0;
+      z-index: 2;
+    }
+
+    header img {
+      height: 60px;
+      max-width: 120px;
+    }
+
+    nav {
+      display: flex;
+      gap: 1rem;
+    }
+
+    nav a {
+      color: #fff;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-weight: bold;
+      border-radius: 4px;
+      transition: background 0.2s;
+      font-size: 1rem;
+    }
+
+    nav a:hover {
+      background: rgba(76,215,240,0.18);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 5rem 1rem 2rem 1rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: #b0d7ff;
+    }
+
+    section {
+      padding: 2.5rem 1rem 1.5rem 1rem;
+      text-align: center;
+      background: transparent;
+    }
+
+    h2 {
+      color: #4cd7f0;
+      margin-bottom: 1.5rem;
+      font-size: 1.3rem;
+    }
+
+    .team {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2rem;
+      justify-items: center;
+    }
+
+    .profile {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+
+    .profile .bio {
+      max-width: 360px;
+      text-align: left;
+      color: #b0d7ff;
+      line-height: 1.5;
+      font-size: 1rem;
+    }
+
+    .profile .bio .name {
+      color: #ffffff;
+      font-size: 1.1rem;
+    }
+    .profile .links {
+      margin-top: 0.8rem;
+    }
+    .profile .links a {
+      color: #4cd7f0;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 1rem;
+    }
+    .card {
+      background: rgba(0,0,0,0.6);
+      padding: 1.2rem;
+      border-radius: 12px;
+      text-align: center;
+      width: 220px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+      transition: transform .3s;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .avatar-img {
+      width: 115px;
+      height: 115px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+      border: 2px solid #4cd7f0;
+      box-shadow: 0 0 10px rgba(76,215,240,0.15);
+      background: #131935;
+    }
+
+    .note {
+      font-size: 0.9rem;
+      color: #dbf8fd;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.4rem;
+      background: rgba(0,0,0,0.7);
+      margin-top: 2rem;
+      font-size: 1rem;
+      color: #b0d7ff;
+    }
+
+    /* --- Responsivo para mobile --- */
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        padding: 1rem 0.7rem;
+        align-items: flex-start;
+      }
+      header img {
+        height: 46px;
+        max-width: 110px;
+      }
+      nav {
+        width: 100%;
+        justify-content: flex-start;
+        margin-top: 0.5rem;
+      }
+      .profile {
+        flex-direction: column;
+        align-items: center;
+      }
+      .profile .bio {
+        max-width: 100%;
+        text-align: center;
+      }
+      .hero {
+        padding: 2.3rem 1rem 2rem 1rem;
+      }
+    }
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 1.2rem;
+      }
+      h2 {
+        font-size: 1rem;
+      }
+      .avatar-img {
+        width: 75px; height: 75px;
+      }
+    }
+    @media (max-width:350px) {
+      footer, .hero, section { font-size: 0.8rem; }
+    }
   </style>
 </head>
 <body>
-  <header class="header">
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo">
-  <img src="Sy-Logo.png" alt="Sy-Logo" style="max-width:100%; height:auto; display:block;">
-</div>
-        </div>
-        <div>
-          <strong>SynapseDev</strong><br>
-          <small
-          style="font-weight: 400;color:var( --muted);"></small>                       
-        </div>
-         </div>
-         <nav class="navlinks">
-         </nav>        
-        </div>
-      </div>
-      <nav class="navlinks" aria-label="Menu principal">
-        <a href="#home">Home</a>
-        <a href="#servicos">Serviços</a>
-        <a href="#equipe">Equipe</a>
+  
+  <div id="background"></div>
+
+  <div class="content">
+    <header>
+      <img src="SYNAPSE.DEV.png" alt="SynapseDev">
+      <nav>
+        <a href="#sobre">Sobre</a>
+        <a href="#Dev-Thiago">Dev</a>
         <a href="#contato">Contato</a>
-        <a href="#tortilha" class="cta">Projetos</a>
       </nav>
-    </div>
-  </header>
+    </header>
 
-  <main class="container">
-    <section id="home" class="hero">
-      <div>
-        <h1>SynapseDev — Conectando ideias a soluções inovadoras</h1>
-        <p>Somos uma equipe focada em transformar problemas reais em softwares simples, confiáveis e com ótimo design. Projetos web, mobile e sistemas sob medida.</p>
-        <div style="display:flex; gap:0.75rem; margin-top:1rem">
-          <a href="#servicos" style="text-decoration:none"><button style="padding:0.75rem 1rem; border-radius:10px; border:0; background:var(--accent); color:#fff; cursor:pointer">Conheça nossos serviços</button></a>
-          <a href="#contato" style="text-decoration:none"><button style="padding:0.75rem 1rem; border-radius:10px; border:1px solid rgba(15,23,42,0.06); background:transparent; cursor:pointer">Fale conosco</button></a>
-        </div>
-        <p class="note">.</p>
-      </div>
-
-      <aside class="card">
-        <h3>Resumo rápido</h3>
-        <p style="color:var(--muted); margin-top:0.25rem">Empresa de desenvolvimento fundada por 4 desenvolvedores focados em criar a melhor tecnologia pra sua Empresa.</p>
-        <dl style="margin-top:0.75rem">
-          <dt style="font-weight:600">Stack sugerida</dt>
-          <dd style="color:var(--muted); margin-bottom:0.5rem">HTML • CSS • JS (ou React) · Node.js · PostgreSQL</dd>
-          <dt style="font-weight:600">Deploy</dt>
-          <dd style="color:var(--muted)">GitHub + Netlify / Vercel</dd>
-        </dl>
-      </aside>
+    <section class="hero">
+      <h1>SynapseDev</h1>
+      <p>Conectando ideias a soluções inovadoras</p>
     </section>
 
-    <section id="servicos" style="margin-top:1.5rem">
-      <h2>Serviços</h2>
-      <div class="services">
-        <div class="service card">
-          <h4>Desenvolvimento Web</h4>
-          <p class="note">Landing pages, sites institucionais, lojas.</p>
-        </div>
-        <div class="service card">
-          <h4>Apps Mobile</h4>
-          <p class="note">Aplicativos para iOS/Android com React Native.</p>
-        </div>
-        <div class="service card">
-          <h4>Sistemas de Gestão</h4>
-          <p class="note">Painéis administrativos, frente de caixa.</p>
-        </div>
-        <div class="service card">
-          <h4>Consultoria & Suporte</h4>
-          <p class="note">Arquitetura, performance e deploy.</p>
+    <section id="sobre">
+      <h2>Sobre</h2>
+      <p>
+        A SynapseDev é uma empresa de tecnologia especializada em desenvolver soluções inovadoras que conectam ideias a resultados reais, com impacto positivo para pessoas e negócios.
+      </p>     
+    </section>
+
+    <section id="Dev-Thiago">
+      <h2>Dev Thiago Horta</h2>
+      <div class="profile">
+        <img src="Thiago.png" alt="Thiago Horta" class="avatar-img">
+        <div class="bio">
+          <p class="name"><strong>Thiago Horta</strong> — Desenvolvedor full&nbsp;stack e único mantenedor do projeto SynapseDev.</p>
+          <p class="links">
+            <a href="https://github.com/EXU13" target="_blank" rel="noopener">GitHub</a>
+          </p>
         </div>
       </div>
     </section>
 
-    <section id="equipe" style="margin-top:1.5rem">
-      <h2>Nossa equipe</h2>
-      <div class="team">
-        <div class="card member">
-          <div class="avatar">TH</div>
-          <div>
-            <strong>Thiago Horta</strong><div class="note">Gestão de projetos</div>
-          </div>
-        </div>
-        <div class="card member">
-          <div class="avatar" style="background:linear-gradient(135deg,#06b6d4,#0891b2)">MA</div>
-          <div>
-            <strong>Marina</strong><div class="note">Banco de Dados</div>
-          </div>
-        </div>
-        <div class="card member">
-          <div class="avatar" style="background:linear-gradient(135deg,#7c3aed,#c084fc)">LE</div>
-          <div>
-            <strong>Leo</strong><div class="note">Front End</div>
-          </div>
-        </div>
-        <div class="card member">
-          <div class="avatar" style="background:linear-gradient(135deg,#f97316,#ef4444)">PE</div>
-          <div>
-            <strong>Pedro</strong><div class="note">Back-end & BD</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contato" style="margin-top:1.5rem">
+    <section id="contato">
       <h2>Contato</h2>
-      <div class="contact">
-        <form class="card" onsubmit="event.preventDefault()">
-          <label style="display:block; font-weight:600">Nome</label>
-          <input placeholder="Seu nome" style="width:100%; padding:0.6rem; margin-top:0.25rem; border-radius:8px; border:1px solid rgba(15,23,42,0.06)">
-          <label style="display:block; font-weight:600; margin-top:0.5rem">Email</label>
-          <input placeholder="email@exemplo.com" style="width:100%; padding:0.6rem; margin-top:0.25rem; border-radius:8px; border:1px solid rgba(15,23,42,0.06)">
-          <label style="display:block; font-weight:600; margin-top:0.5rem">Mensagem</label>
-          <textarea placeholder="Como podemos ajudar?" style="width:100%; padding:0.6rem; margin-top:0.25rem; border-radius:8px; border:1px solid rgba(15,23,42,0.06)"></textarea>
-          <div style="margin-top:0.75rem">
-            <button style="padding:0.7rem 1rem; border-radius:10px; border:0; background:var(--accent); color:#fff; cursor:pointer">Enviar</button>
-          </div>
-        </form>
-
-        <aside class="card">
-          <h4>Informações rápidas</h4>
-          <p class="note" style="margin-top:0.5rem">Email: <strong>synapse.dev@outlook.com</strong></p>
-          <p class="note">Telefone/WhatsApp: <strong>(11) 962986143</strong></p>
-          <p class="note">Coloque aqui links para GitHub, LinkedIn e portfólio.</p>
-        </aside>
-      </div>
+      <p>Fale com a gente:
+        <a href="mailto:contato@synapsedev.com" style="color:#4cd7f0;">
+          contato@synapsedev.com
+        </a>
+      </p>
     </section>
 
-    
-
-    <footer class="footer">
-      <div class="container">© SynapseDev — Projeto TCC. Arquivo gerado como esqueleto — personalize textos, cores e imagens. Boa sorte!</div>
+    <footer>
+      <p>&copy; 2025 SynapseDev. Todos os direitos reservados.</p>
     </footer>
-  </main>
+  </div>
 
+  <!-- VANTA.js + THREE.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanta/dist/vanta.net.min.js"></script>
   <script>
-    // Pequeno script para abrir/fechar menu mobile no futuro (placeholder)
-    (function(){ /* se quiser adicionar menu mobile, insira aqui */ })();
+    VANTA.NET({
+      el: "#background",
+      mouseControls: true,
+      touchControls: true,
+      minHeight: 200.00,
+      minWidth: 200.00,
+      scale: 1.00,
+      scaleMobile: 1.00,
+      color: 0x4cd7f0,
+      backgroundColor: 0x0a0f2c,
+      points: 12.00,
+      maxDistance: 20.00,
+      spacing: 16.00
+    })
   </script>
 
-  <!--
-  INSTRUÇÕES RÁPIDAS DE EDIÇÃO:
-  - Substitua a logo (div.logo) por uma <img src="logo.svg"> ou seu SVG inline.
-  - Para mudar cores, altere as variáveis em :root.
-  - Remova os comentários e personalize conteúdo de equipe e serviços.
-  - Para criar a página do cliente (Tortilha na Rua), duplique este arquivo e ajuste identidade (cores, imagens e conteúdo do cardápio).
-  -->
 </body>
 </html>
